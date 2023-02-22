@@ -20,20 +20,50 @@ public class Ejercicio6 {
 
         int numero = (int)(Math.random()*101);
         int contador = 4;
+        boolean acertado = false;
+
+        System.out.println(numero);
 
         System.out.println("Introduce un número al azar entre el 0 y el 100: ");
         
+        if (acertado == false) {
+            
 
-        for (int i = 0; i < 5; i++) {
-            int x = datos.nextInt();
-            if (numero == x) {
-                System.out.printf("Has acertado, el número era %s\n", numero);
-            } if (contador == 0) {
-                System.out.printf("Nos has acertado. GAME OVER");
-            } else {
-                System.out.printf("No has acertado! Aun te quedan %s intentos\n", contador);
+            for (int i = 0; i < 5; i++) {
+
+                //Introducimos el numero.
+                int x = datos.nextInt();
+
+                //Si el x es igual al numero, acertado es true y acaba el bucle.
+                if (numero == x) {
+                    acertado = true;
+                    i = 5;
+                } 
+                
+                //El resto del codigo se ejecuta si no hemos adivinado el número.
+                if (contador == 0 && acertado == false) {
+                    System.out.println("Nos has acertado. GAME OVER");
+                    System.out.printf("El número era %d", numero);
+                } 
+                
+                if (acertado == false) {
+                    System.out.printf("No has acertado! Aun te quedan %s intentos\n", contador);
+                }
+
+                if (numero > x && contador > 0) {
+                    System.out.printf("El número es mayor a %d", x);
+                }
+                if (numero < x && contador > 0) {
+                    System.out.printf("El número es menor a %d", x);
+                }
+                contador -= 1;
+                System.out.println();
             }
-            contador -= 1;
+
+        } 
+        
+        if (acertado == true) {
+            System.out.printf("Has acertado, el número era %s\n", numero);
         }
 
     }
